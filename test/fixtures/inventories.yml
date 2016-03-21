@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  items_id: 
+  users_id: 
+  quantity: 1
+  paypal: false
+
+two:
+  items_id: 
+  users_id: 
+  quantity: 1
+  paypal: false
