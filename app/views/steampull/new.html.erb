@@ -1,0 +1,9 @@
+<h1> Hello <%= @user.name %> Pull your inventory into our database! </h1>
+<% if @user.steam_id? %>
+<p> First Check that this steam_id is legitimate: <%= @user.steam_id %> </p>
+<% else %>
+<p> Please find and upload your personal steam url, instructions to find that are <a href="http://forums.steampowered.com/forums/showthread.php?t=1855405"> here </a>
+<% end %>
+<p> Next ensure that your steam inventory is public </p>
+<p> Click this button to update your account </p>
+<%= link_to "Update", steampull_path, :method => :create %>

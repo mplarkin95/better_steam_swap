@@ -1,3 +1,9 @@
-<%= @user.name %> AKA
+<%= @user.name %> 
 <br> 
-<%= @user.steam_id %>
+<%= @user.email %>
+<br>
+<%if @myprofile %>
+	<%= link_to "update", steampull_path %>
+<% else %>
+Isn't there profile better than yours?
+<% end %>
