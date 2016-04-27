@@ -2,11 +2,14 @@
 <html>
 <head>
   <title>SteamSwapWebsite</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <!-- <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %> -->
+  <%= stylesheet_link_tag 'main.css', media: 'all' %>
+  <%= stylesheet_link_tag 'bootstrap.min.css', media: 'all' %>
+  <%= javascript_include_tag 'bootstrap.min.js', media: 'all' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="fixed-nav-padding">
 <%= render "shared/header" %>
 <% flash.each do |message_type, message| %>
   <div class="alert alert-<%= message_type %>"><%= message %></div>

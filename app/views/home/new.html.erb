@@ -1,5 +1,18 @@
-<% if logged_in? %>
-<h1> Welcome <%= current_user.name %>
-<% else %>
-<H1> Welcome you are not logged in! </H1>h1>
+<html>
+<head>
+  <%= stylesheet_link_tag 'main.css', media: 'all' %>
+  <%= stylesheet_link_tag 'bootstrap.min.css', media: 'all' %>
+  <%= javascript_include_tag 'bootstrap.min.js', media: 'all' %>
+</head>
+<body>
+  <% if logged_in? %>
+    <div class="alert alert-warning">
+      <h1> Welcome <%= current_user.name %> </h1>
+    </div>
+  <% else %>
+    <div class="alert alert-success">
+      <h1> Welcome you are not logged in! </h1>
+    </div>
 <% end %>
+</body>
+</html>
