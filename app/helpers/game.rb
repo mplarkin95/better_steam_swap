@@ -36,7 +36,7 @@ class Game
   # Each json hash has a key called success, if success is true then the request work
   # otherwise it'll be false.
   def success?
-    if @json_hash["success"] = true
+    if @json_hash["success"] == true
       return true
     else
       return false

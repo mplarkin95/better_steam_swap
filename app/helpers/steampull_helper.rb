@@ -7,6 +7,8 @@ module SteampullHelper
 		for game in games
 			game_hash = hash.get_game_info(game)
 			
+			# switch this to unless
+			# unless == if !Item
 			if !Item.exists?(:name => game)
 				new_game = Item.new(:name => game, :description => game_hash["description"], :id_steam => game_hash["classid"], :steam_url => game_hash["link"])
 				new_game.save 
