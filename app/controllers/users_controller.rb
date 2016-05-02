@@ -19,6 +19,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)    
     if @user.save
       log_in @user
+      UserMailer.welcome_email(@user).deliver_now
       redirect_to steampull_url
     else
       render 'new'
