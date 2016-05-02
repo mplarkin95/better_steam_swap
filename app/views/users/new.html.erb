@@ -8,31 +8,31 @@
         <%= form_for(@user) do |f| %>
           <%= render 'shared/error_messages' %>
           <div class="input-group">
-            <%= f.label :name %>
+            <%= f.label :name, style: "margin-top: 10px;" %>
             <%= f.text_field :name, class: "form-control", placeholder: "Name" %>
           </div>
 
           <div class="input-group">
-            <%= f.label "Steam URL" %>
-            <%= f.text_field :steam_id, class: "form-control", placeholder: "optional" %>
+            <%= f.label "Steam URL", style: "margin-top: 10px;" %>
+            <%= f.text_field :steam_id, class: "form-control", placeholder: "Optional" %>
           </div>
 
           <div class="input-group">
-            <%= f.label :email %>
+            <%= f.label :email, style: "margin-top: 10px;" %>
             <%= f.email_field :email, class: "form-control", placeholder: "Email" %>
           </div>
 
           <div class="input-group">
-            <%= f.label :password %>
+            <%= f.label :password, style: "margin-top: 10px;" %>
             <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
           </div>
 
           <div class="input-group">
-            <%= f.label :password_confirmation, "Confirmation" %>
+            <%= f.label :password_confirmation, "Confirmation", style: "margin-top: 10px;" %>
             <%= f.password_field :password_confirmation, class: "form-control" %>
           </div>
 
-          <%= f.submit "Create my account", class: "btn btn-primary" %>
+          <%= f.submit "Create my account", class: "btn btn-primary", style: "margin-top: 10px;" %>
         <% end %>
       </div> <!-- col -->
     </div> <!-- row -->
