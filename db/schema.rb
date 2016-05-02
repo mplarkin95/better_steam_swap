@@ -11,19 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160321200025) do
+ActiveRecord::Schema.define(version: 20160502032437) do
 
   create_table "inventories", force: :cascade do |t|
-    t.integer  "items_id"
-    t.integer  "users_id"
+    t.integer  "item_id"
+    t.integer  "user_id"
     t.integer  "quantity"
     t.boolean  "paypal"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "inventories", ["items_id"], name: "index_inventories_on_items_id"
-  add_index "inventories", ["users_id"], name: "index_inventories_on_users_id"
+  add_index "inventories", ["item_id"], name: "index_inventories_on_item_id"
+  add_index "inventories", ["user_id"], name: "index_inventories_on_user_id"
 
   create_table "items", force: :cascade do |t|
     t.string   "id_steam"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20160321200025) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "steam_url"
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,13 +44,13 @@ ActiveRecord::Schema.define(version: 20160321200025) do
   end
 
   create_table "wishlists", force: :cascade do |t|
-    t.integer  "items_id"
-    t.integer  "users_id"
+    t.integer  "item_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "wishlists", ["items_id"], name: "index_wishlists_on_items_id"
-  add_index "wishlists", ["users_id"], name: "index_wishlists_on_users_id"
+  add_index "wishlists", ["item_id"], name: "index_wishlists_on_item_id"
+  add_index "wishlists", ["user_id"], name: "index_wishlists_on_user_id"
 
 end

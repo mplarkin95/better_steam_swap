@@ -13,6 +13,11 @@
           </div>
 
           <div class="input-group">
+            <%= f.label "Steam URL" %>
+            <%= f.text_field :steam_id, class: "form-control", placeholder: "optional" %>
+          </div>
+
+          <div class="input-group">
             <%= f.label :email %>
             <%= f.email_field :email, class: "form-control", placeholder: "Email" %>
           </div>

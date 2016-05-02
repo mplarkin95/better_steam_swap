@@ -12,7 +12,7 @@ class Inventory
   attr_accessor :inven_hash
 
   def initialize(profile_id)
-    @inven_url = "http://steamcommunity.com/profiles/" + "#{profile_id}" + "/inventory/json/753/1"
+    @inven_url = "#{profile_id}" + "inventory/json/753/1"
     @inven_hash = Hash.new
   end
 
@@ -37,5 +37,5 @@ end
 # 76561198028497405
 # jonny cyr
 # 76561198027527166
-m = Inventory.new(76561198028497405)
-m.get_inven_info
+# m = Inventory.new(76561198028497405)
+# m.get_inven_info

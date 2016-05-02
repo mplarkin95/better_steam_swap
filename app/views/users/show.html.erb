@@ -4,6 +4,19 @@
 <br>
 <%if @myprofile %>
 	<%= link_to "update", steampull_path %>
+<ul>
+<% for g in @games %>
+ <div class="container">
+	<li>
+		<h3>
+			<%= g.name %>
+		</h3>
+		<p> <%=g.description %> </p> 
+	</li>
+  </div>
+<% end %>
+</ul>
+
 <% else %>
 Isn't there profile better than yours?
 <% end %>

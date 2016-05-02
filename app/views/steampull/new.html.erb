@@ -1,9 +1,64 @@
 <h1> Hello <%= @user.name %> Pull your inventory into our database! </h1>
 <% if @user.steam_id? %>
-<p> First Check that this steam_id is legitimate: <%= @user.steam_id %> </p>
+<p> <strong>Check that this steam url is legitimate: <a href = <%= @user.steam_id %>><%= @user.steam_id%> </a> and that your inventory is set to public </strong></p>
 <% else %>
-<p> Please find and upload your personal steam url, instructions to find that are <a href="http://forums.steampowered.com/forums/showthread.php?t=1855405"> here </a>
+<p> Please find and upload your personal steam url.  </p> 
 <% end %>
-<p> Next ensure that your steam inventory is public </p>
-<p> Click this button to update your account </p>
-<%= link_to "Update", steampull_path, :method => :create %>
+
+  <p><h3>Instructions to find your legitimate steam/url id & set your inventory to public:</h3></p>
+
+<div>
+  <a  data-toggle="collapse" data-target="#Application-ins">From the Steam Application </a> 
+  <div id="Application-ins" class="collapse">
+    <ol>
+    	<li>
+    		<p>Login to your account on the Steam application </p>
+    	</li>
+    	<li>
+    		<p>Click on the link to your community page (The large display of your steam username next to the Store, Library and Community links)</p>
+    		<%= image_tag "Reference1.png" %>
+    	</li>
+    	<li>
+    		<p> Here the Browser bar should show your steam url. It is in the form of either <b>"http://steamcommunity.com/id/'YOUR_CUSTOM_ID'/"</b>
+    		Or the form <b> "http://steamcommunity.com/profile/12345678912344857/"</b></p>
+    	</li>
+    	<li>
+    		<p> If you can't find it make sure that in Settings > Interface you have "Display Steam URL Address Bar when available" enabled </p>
+    	</li>
+    	<li>
+    		<p>Now Click "Edit Profile" From your profile page.  On the right hand side of the screen click "Privacy Settings".</p>
+    	</li>
+    	<li>
+    		<p>On your privacy settings page scroll to the bottom and make sure that your inventory options look like this: </p>
+    		<%= image_tag "steamInv2.png" %>
+    	</li>
+    </ol>  
+  </div>
+</div>
+
+<div>
+  <a  data-toggle="collapse" data-target="#Web-ins">From the Steam Community Website (Web Browser) </a> 
+  <div id="Web-ins" class="collapse">
+    <ol>
+    	<li>
+    		<p>Login to your account on the  <a href="https://steamcommunity.com/login/home/?goto=0"> Steam Community Website </a> </p>
+    	</li>
+    	<li>
+    		<p> Here the Browser bar should show your steam url. It is in the form of either <b>"http://steamcommunity.com/id/'YOUR_CUSTOM_ID'/"</b>
+    		Or the form <b> "http://steamcommunity.com/profile/12345678912344857/"</b></p>
+    	</li>
+    	<li>
+    		<p>Now Click "Edit My Profile" From that page .</p>
+    		<%= image_tag "sweb1.png" %>
+    	</li>  
+    	<li> 
+    		<p> On the right hand side of the screen click "Privacy Settings".</p>
+    	</li>
+    	<li>
+    		<p>On your privacy settings page scroll to the bottom and make sure that your inventory options look like this: </p>
+    		<%= image_tag "steamInv2.png" %>
+    	</li>
+    </ol>  
+  </div>
+</div>
+ <%= button_to "Update", steampull_path, :method => :create, :class => "btn btn-primary large" %>
