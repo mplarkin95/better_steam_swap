@@ -1,22 +1,32 @@
-<%= @user.name %> 
-<br> 
+<div class="col-md-2 container-fluid text-center">
+
+<h1> Welcome <br><%= @user.name %> </h1>
+ 
 <%= @user.email %>
 <br>
 <%if @myprofile %>
-	<%= link_to "update", steampull_path %>
-<ul>
-<% for g in @games %>
- <div class="container">
-	<li>
-		<h3>
-			<%= g.name %>
-		</h3>
-		<p> <%=g.description %> </p> 
-	</li>
-  </div>
-<% end %>
-</ul>
-
+	<%= button_to "update inventory", steampull_path, :method => :get %>
 <% else %>
 Isn't there profile better than yours?
 <% end %>
+</div>
+<div class="col-md-1"></div>
+<div class=" col-md-4 container-fluid">
+
+ <div class="col-md-offset-2">
+	<h2>Your Inventory for trade!</h2>
+ </div>
+ 
+<div class="panel-group">
+  <% for i in @games %>
+  <div class="row">
+    <div class="panel-primary" >
+        <div class="panel-heading" ><div class="text-center"><h4><%= i.name %> </h4></div></div>
+        <div class="panel-body"> <strong><%= i.description %></strong> </div>
+      </div>
+  </div>
+  <% end %>
+</div> 
+</div>
+</ul>
+
