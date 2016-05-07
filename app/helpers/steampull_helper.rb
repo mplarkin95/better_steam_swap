@@ -6,11 +6,13 @@ module SteampullHelper
 		games = hash.return_games
 		for game in games
 			game_hash = hash.get_game_info(game)
-			
+			img_tag = game_hash["img_url"]
+			puts img_tag
 			# switch this to unless
 			# unless == if !Item
 			if !Item.exists?(:name => game)
-				new_game = Item.new(:name => game, :description => game_hash["description"], :id_steam => game_hash["classid"], :steam_url => game_hash["link"])
+				new_game = Item.new(:name => game, :description => game_hash["description"], :id_steam => game_hash["classid"], 
+					:steam_url => game_hash["link"], :img_url =>game_hash["img_url"])
 				new_game.save 
 			end
 

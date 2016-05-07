@@ -5,7 +5,12 @@
 <%= @user.email %>
 <br>
 <%if @myprofile %>
-	<%= button_to "update inventory", steampull_path, :method => :get %>
+	<div>
+      <%= button_to "update inventory", steampull_path, :method => :get %>
+  </div>
+  <div>
+    <%= link_to "edit my profile", edit_user_path %>
+  </div>
 <% else %>
 Isn't there profile better than yours?
 <% end %>

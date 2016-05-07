@@ -1,0 +1,13 @@
+<%= form_tag wishlist_path do %>
+<ul>
+  <% @items.each do |item| %>
+      <li>
+        <%= check_box_tag "items_ids[]", item.id %>
+        <%= h item.name %>
+      </li>
+  <% end %>
+</ul>
+
+<%= submit_tag 'Add'%>
+
+<% end %>

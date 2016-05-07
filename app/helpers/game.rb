@@ -99,6 +99,8 @@ class Game
         @main_hash[value["name"]]["link"] = actions["link"]
       end
 
+      #adds link to image
+      @main_hash[value["name"]]["img_url"] = ("http://cdn.steamcommunity.com/economy/image/"+value["icon_url_large"])
       # Adds the amount section for the main hash.
       @main_hash[value["name"]]["amount"] = 0
     end

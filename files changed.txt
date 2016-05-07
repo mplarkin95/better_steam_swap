@@ -1,0 +1,6 @@
+app/controllers/home_controller.rb
+
+app/views/home/new.html.erb
+
+app/views/users/show.html.erb
+

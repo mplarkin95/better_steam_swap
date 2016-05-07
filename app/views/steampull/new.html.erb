@@ -1,8 +1,36 @@
 <h1> Hello <%= @user.name %> Pull your inventory into our database! </h1>
 <% if @user.steam_id? %>
 <p> <strong>Check that this steam url is legitimate: <a href = <%= @user.steam_id %>><%= @user.steam_id%> </a> and that your inventory is set to public </strong></p>
+<div id="url-edit" class="collapse">
+    <%= form_for @user, url: steampull_path, method: :patch  do |f| %>
+        <%= f.label "steam url" %>
+        <%= f.text_field :steam_id ,:size => 60 %><br>
+        <%= f.label :password %>
+        <%= f.password_field :password %><br>
+        <%= f.submit "Update URL", :style =>"btn", :class => "button" %>
+</div>
+<% end %> 
+<script >
+function Alternate(){
+    if(document.getElementById("hider").innerHTML=="Change URL")
+    {
+        document.getElementById("hider").innerHTML="Hide"
+    }else
+    {
+        document.getElementById("hider").innerHTML="Change URL"
+    }
+}</script>
+    <a  id="hider" class="btn" data-toggle="collapse" data-target="#url-edit" onclick="Alternate()">Change URL</a>
 <% else %>
 <p> Please find and upload your personal steam url.  </p> 
+<div id="url-edit" >
+    <%= form_for @user do |f| %>
+        <%= f.label "steam url" %>
+        <%= f.text_field steam_id %>
+        <br>
+        <%= f.submit %>
+</div>
+<% end %>
 <% end %>
 
   <p><h3>Instructions to find your legitimate steam/url id & set your inventory to public:</h3></p>
@@ -61,4 +89,7 @@
     </ol>  
   </div>
 </div>
- <%= button_to "Update", steampull_path, :method => :create, :class => "btn btn-primary large" %>
+<br>
+<div class="col-md-2-offset">
+    <%= button_to "Update Inventory", steampull_path, :method => :create, :class => "btn btn-primary" %>
+</div>
