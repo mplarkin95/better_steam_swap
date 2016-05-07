@@ -4,11 +4,11 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
     if logged_in?
       @myprofile = (@user.id == current_user.id)
-      # inv = Inventory.where(user_id: @user.id)
-      # wish = Item.where(id: Wishlist.where(user_id: @user.id).item_id)
-
-      @games = @user.items
-      @wishlist = @user.items
+      inv_ids = Inventory.where(user_id: @user.id).pluck(:item_id)
+      wish_ids = Wishlist.where(user_id: @user.id).pluck(:item_id)
+      
+      @games = Item.where(id: inv_ids)
+      @wishlist = Item.where(id: wish_ids)
 
     else
       @myprofile = false
@@ -33,9 +33,9 @@ class UsersController < ApplicationController
     if User.find(params[:id]).id != current_user.id
       flash[ :error]="Illegal Maneuver Hombre"
       redirect_to current_user
+    else
+      @user= current_user
     end
-
-
   end   
 
   def update

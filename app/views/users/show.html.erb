@@ -1,3 +1,4 @@
+<div class="row">
 <div class="col-md-2 container-fluid text-center">
 
 <h1> Welcome <br><%= @user.name %> </h1>
@@ -15,23 +16,42 @@
 Isn't there profile better than yours?
 <% end %>
 </div>
-<div class="col-md-1"></div>
 <div class=" col-md-4 container-fluid">
 
- <div class="col-md-offset-2">
-	<h2>Your Inventory for trade!</h2>
+ <div class="text-center">
+  <% if @myprofile %>
+	 <h2>Your Inventory for trade!</h2>
+  <% else %> 
+    <h2> <%= @user.name %>'s Inventory </h2>
+  <% end %>
  </div>
  
-<div class="panel-group">
   <% for i in @games %>
+    <div class="row">
+      <%= render "shared/item",:item => i %>
+    </div>
+  <% end %>
+</div> 
+
+<div class="col-md-1"></div>
+
+<div class=" col-md-4 container-fluid">
+
+ <div class="text-center">
+
+  <% if @myprofile %>
+  <h2>Your Wishlist!</h2>
+  <%= link_to "Edit your Wishlist", wishlist_url %>
+  <% else %> 
+  <h2> <%= @user.name %>'s Wishlist </h2>
+  <% end %>
+ </div>
+
+ 
+  <% for i in @wishlist %>
   <div class="row">
-    <div class="panel-primary" >
-        <div class="panel-heading" ><div class="text-center"><h4><%= i.name %> </h4></div></div>
-        <div class="panel-body"> <strong><%= i.description %></strong> </div>
-      </div>
+    <%= render "shared/item",:item => i %>
   </div>
   <% end %>
 </div> 
-</div>
-</ul>
 

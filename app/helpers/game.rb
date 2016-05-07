@@ -86,19 +86,21 @@ class Game
 
       # Adds to the main hash values associating each description with
       # its corresponding game.
-      value["descriptions"].each do |desc|
-        if @main_hash[value["name"]]["description"].nil?
-          @main_hash[value["name"]]["description"] = desc["value"]
-        else
-          @main_hash[value["name"]]["description"] << desc["value"]
+      unless value["descriptions"] == ""
+        value["descriptions"].each do |desc|
+          if @main_hash[value["name"]]["description"].nil?
+            @main_hash[value["name"]]["description"] = desc["value"]
+          else
+            @main_hash[value["name"]]["description"] << desc["value"]
+          end
+        end
+      end  
+      # Adds the link to each corresponding game.
+      unless value["actions"].nil?
+        value["actions"].each do |actions|
+          @main_hash[value["name"]]["link"] = actions["link"]
         end
       end
-
-      # Adds the link to each corresponding game.
-      value["actions"].each do |actions|
-        @main_hash[value["name"]]["link"] = actions["link"]
-      end
-
       #adds link to image
       @main_hash[value["name"]]["img_url"] = ("http://cdn.steamcommunity.com/economy/image/"+value["icon_url_large"])
       # Adds the amount section for the main hash.

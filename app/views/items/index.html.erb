@@ -9,7 +9,7 @@
     <div class="row">
       <div class="col-md-4">
         <% unless items_ary[i].nil? %>
-          <%= render items_ary[i], locals: {item: items_ary[i]} %>
+          <%= render "shared/items", :item => i %>
         <% end %>
       </div>
       <div class="col-md-4">

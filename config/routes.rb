@@ -9,8 +9,10 @@ Rails.application.routes.draw do
   patch 'steampull' =>'steampull#update'
   get 'wishlist' => 'wishlist#new'
   post 'wishlist' => 'wishlist#create'
+
   
   resources :users
+  resources :items
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
