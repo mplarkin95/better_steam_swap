@@ -1,29 +1,7 @@
-<%= form_tag(items_path, :method => "get", id: "search-form") do %>
-<%= text_field_tag :search, params[:search], placeholder: "Search Items" %>
-<%= submit_tag "Search" %>
-<% end %>
-
 <% if @items.present? %>
-  <% items_ary = @items %>
-  <% items_ary.each_with_index do |item, i| %>
-    <div class="row">
-      <div class="col-md-4">
-        <% unless items_ary[i].nil? %>
-          <%= render items_ary[i], locals: {item: items_ary[i]} %>
-        <% end %>
-      </div>
-      <div class="col-md-4">
-        <% unless items_ary[i+1].nil? %>
-          <%= render items_ary[i+1], locals: {item: items_ary[i+1]} %>
-        <% end %>
-      </div>
-      <div class="col-md-4">
-        <% unless items_ary[i+2].nil? %>
-          <%= render items_ary[i+2], locals: {item: items_ary[i+2]} %>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
+  <div class="row">
+      <%= render @items, locals: {item: @items} %>
+  </div>
 <% else %> 
   <p> There are no users with <%= params[:search] %></p>
 <% end %>
