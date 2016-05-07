@@ -26,7 +26,7 @@ function Alternate(){
 <div id="url-edit" >
     <%= form_for @user do |f| %>
         <%= f.label "steam url" %>
-        <%= f.text_field steam_id %>
+        <%= f.text_field :steam_id, :size =>60 %>
         <br>
         <%= f.submit %>
 </div>
