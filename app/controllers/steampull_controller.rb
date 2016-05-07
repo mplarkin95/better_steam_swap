@@ -20,9 +20,10 @@ class SteampullController < ApplicationController
 			return
 		end
 
-		flash[ :success] = "It Worked"
+		flash[ :success] = "inventory updated"
 		redirect_to current_user, :method => :new
 	end
+
 
 	def update
 		user = current_user

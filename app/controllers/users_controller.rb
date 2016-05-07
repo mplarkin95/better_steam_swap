@@ -40,7 +40,7 @@ class UsersController < ApplicationController
 
   def update
 
-    if current_user.update(params[:user])
+    if current_user.update(user_params)
       redirect_to current_user
     else
       flash[ :error]= "incorrect "
