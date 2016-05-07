@@ -6,8 +6,12 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
   get  'steampull' => 'steampull#new'
   post 'steampull' => 'steampull#create'
-
+  patch 'steampull' =>'steampull#update'
+  get 'wishlist' => 'wishlist#new'
+  post 'wishlist' => 'wishlist#create'
+  
   resources :users
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

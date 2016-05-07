@@ -1,11 +1,15 @@
 class UsersController < ApplicationController
-  #before_action: valid_login, only: [:edit, :update] 
+  before_action :valid_login, only: :edit
 	def show
 		@user = User.find(params[:id])
     if logged_in?
       @myprofile = (@user.id == current_user.id)
+      # inv = Inventory.where(user_id: @user.id)
+      # wish = Item.where(id: Wishlist.where(user_id: @user.id).item_id)
+
       @games = @user.items
-      
+      @wishlist = @user.items
+
     else
       @myprofile = false
     end
@@ -26,7 +30,22 @@ class UsersController < ApplicationController
   	end
 
   def edit
+    if User.find(params[:id]).id != current_user.id
+      flash[ :error]="Illegal Maneuver Hombre"
+      redirect_to current_user
+    end
+
+
   end   
+
+  def update
+
+    if current_user.update(params[:user])
+      redirect_to current_user
+    else
+      flash[ :error]= "incorrect "
+    end
+  end
 
   	private
 

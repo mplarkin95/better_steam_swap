@@ -25,13 +25,13 @@ class SteampullController < ApplicationController
 	end
 
 	def update
-		@user = current_user
-		@user.steam_id = params[:id_update][:steam_id]
-		if @user.save
+		user = current_user
+		user.update(update_params)
+		if user.save
 			flash[ :success] = "Updated Steam URL"
 			redirect_to steampull_url, :method => :new
 		else
-			flash[ :error] = "Check Steam URL and try"
+			flash[ :warning] = "Check Steam URL and try"
 			redirect_to current_user
 		end
 	end
@@ -44,6 +44,6 @@ class SteampullController < ApplicationController
 		end
 	end
 	def update_params
-      params.require(:user).permit(:steam_id)
+      params.require(:user).permit(:steam_id, :password)
     end
 end
