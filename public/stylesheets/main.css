@@ -1,3 +1,8 @@
 .fixed-nav-padding {
 	padding-top: 70px;
 }
+
+.item-thumbnail {
+	width: 400px;
+	height: 400px;
+}
