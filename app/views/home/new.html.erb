@@ -1,20 +1,37 @@
-<html>
-<head>
-  <%= stylesheet_link_tag 'main.css', media: 'all' %>
-  <%= stylesheet_link_tag 'bootstrap.min.css', media: 'all' %>
-  <%= javascript_include_tag 'bootstrap.min.js', media: 'all' %>
-</head>
-<body>
-  <% if logged_in? %>
-    <div class="alert alert-warning">
-      <h1> Welcome <%= current_user.name %> </h1>
-    </div>
-  <% else %>
-    <div class="alert alert-success">
-      <h1> Welcome you are not logged in! </h1>
-    </div>
-<% end %>
+<div class="container">
+  <div class="jumbotron">
+    <h1><center> Better Steam Swap </center></h1>
+    <center> 
+      <img src="http://media.vocativ.com/photos/2015/10/Trump-Frog-4chan694957192.png" height="400" width="500">
+    </center>
+    <center><p>    
+      Want to trade games? Sign up!
+    </p></center>
+  </div> <!-- jumbotron -->
+  <div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <h2> Heading </h2>
+      <p> 
+        Trade games!
+      </p>
+    </div> <!-- col -->
+
+    <div class="col-md-4">
+      <h2> Heading </h2>
+      <p> 
+        Trade games!
+      </p>
+    </div> <!-- col -->
+
+    <div class="col-md-4">
+      <h2> Heading </h2>
+      <p> 
+        Trade games!
+      </p>
+    </div> <!-- col -->
+  </div> <!-- row -->
+</div> <!-- container -->
+</div> <!-- container -->
 
 
-</body>
-</html>

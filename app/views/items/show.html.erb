@@ -1,0 +1,11 @@
+<div class="jumbotron">
+  <h1><center> <%= @item.name %> </center></h1>
+  <center> <img src= <%= @item.img_url %> > </center>
+  <center> <p> <%= link_to "Store Page", @item.steam_url %> </p> </center>
+  <center>
+    <div style="width: 500px;">
+      <p> <%= raw @item.description %> </p>
+    </div>
+  </center>
+  <center> <p> <%= link_to "Back", items_path %> </p> </center>
+</div>
