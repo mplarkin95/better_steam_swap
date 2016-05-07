@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: 'no-reply@bettersteamswap.com'
+  default from: 'yourideasaremine@gmail.com'
 
   def welcome_email(user)
   	@user = user

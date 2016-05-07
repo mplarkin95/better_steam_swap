@@ -1,11 +1,22 @@
 class UsersController < ApplicationController
+
+  # User search
+  def index
+    @users = User.all
+    if params[:search]
+      @users = User.search(params[:search]).order("created_at DESC")
+    else 
+      @users = User.all.order("created_at DESC")
+    end
+  end
+
   #before_action: valid_login, only: [:edit, :update] 
 	def show
 		@user = User.find(params[:id])
     if logged_in?
       @myprofile = (@user.id == current_user.id)
       @games = @user.items
-      
+      #UserMailer.welcome_email(@user).deliver_now
     else
       @myprofile = false
     end

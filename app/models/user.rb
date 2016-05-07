@@ -12,5 +12,8 @@ class User < ActiveRecord::Base
 	has_secure_password
 	validates :password, presence: true, length: { minimum: 6 }
 	#validates :steam_id, format: {with: VALID_STEAMURL_REGEX}
+	def self.search(search)
+	  where("name LIKE ?", "%#{search}%")
+	end
 end
 

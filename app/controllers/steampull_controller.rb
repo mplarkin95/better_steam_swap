@@ -5,6 +5,7 @@ class SteampullController < ApplicationController
 	def new
 		@user = current_user
 	end
+	
 	def create
 		begin
 			pull current_user

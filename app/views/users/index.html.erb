@@ -1,0 +1,16 @@
+<!-- <%= @all = User.all %>
+<% for u in @all %>
+  <p> <%= u.name %> </p>
+<% end %> -->
+
+<%= form_tag(users_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Users" %>
+<%= submit_tag "Search" %>
+<% end %>
+
+<% if @users.present? %>
+
+  <%= render @users, locals: {user: @users} %>
+<% else %> 
+  <p> There are no users with <%= params[:search] %></p>
+<% end %>
