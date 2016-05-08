@@ -1,11 +1,12 @@
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-6">
     <h1><center> <%= @item.name %> </center></h1>
     <center> <img src= <%= @item.img_url %> > </center>
     <center> <p> <%= link_to "Store Page", @item.steam_url %> </p> </center>
     <center> <p style="width: 500px;"> <%= raw @item.description %> </p>
     <center> <p> <%= link_to "Back", items_path %> </p> </center>
   </div> <!-- game column -->
+
   <div class="col-md-3">
     <h1><center> Users </center></h1>
     <% if @users.nil? %> 
@@ -17,5 +18,20 @@
       <% end %>
       </ul>
     <% end %>
-  </div>
+  </div> <!-- users column -->
+
+  <div class="col-md-3">
+    <h1><center> Possible Traders </center></h1>
+    <% if logged_in? %>
+      <% if @traders.length == 0 %>
+        <p> Users who have this game do not have a game that you have in their wishlist </p>
+      <% else %>
+        <% for i in @traders %>
+          <li> <%= link_to "#{i.name}", i %> </li>
+        <% end %>
+      <% end %>
+    <% else %>
+      <p> Please log in to see possible traders! </p>
+    <% end %>
+  </div> <!-- users who have this game that want a game in your inventory -->
 </div> <!-- row -->
