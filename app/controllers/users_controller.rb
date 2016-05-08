@@ -4,6 +4,10 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
     if logged_in?
       @myprofile = (@user.id == current_user.id)
+    else
+      @myprofile = false
+    end
+
       inv_ids = Inventory.where(user_id: @user.id).pluck(:item_id)
       wish_ids = Wishlist.where(user_id: @user.id).pluck(:item_id)
       
@@ -14,12 +18,6 @@ class UsersController < ApplicationController
       if @messages.nil?
         @messages=0
       end
-
-
-
-    else
-      @myprofile = false
-    end
 	end
 
 	def new
