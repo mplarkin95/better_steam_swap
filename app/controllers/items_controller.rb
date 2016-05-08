@@ -11,6 +11,8 @@ class ItemsController < ApplicationController
 
   def show 
   	@item = Item.find(params[:id])
+    user_ids = Inventory.where(item_id: @item.id).pluck(:user_id)
+    @users = User.where(id: user_ids)
   end
 
 end

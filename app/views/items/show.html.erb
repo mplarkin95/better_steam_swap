@@ -1,11 +1,21 @@
-<div class="jumbotron">
-  <h1><center> <%= @item.name %> </center></h1>
-  <center> <img src= <%= @item.img_url %> > </center>
-  <center> <p> <%= link_to "Store Page", @item.steam_url %> </p> </center>
-  <center>
-    <div style="width: 500px;">
-      <p> <%= raw @item.description %> </p>
-    </div>
-  </center>
-  <center> <p> <%= link_to "Back", items_path %> </p> </center>
-</div>
+<div class="row">
+  <div class="col-md-8">
+    <h1><center> <%= @item.name %> </center></h1>
+    <center> <img src= <%= @item.img_url %> > </center>
+    <center> <p> <%= link_to "Store Page", @item.steam_url %> </p> </center>
+    <center> <p style="width: 500px;"> <%= raw @item.description %> </p>
+    <center> <p> <%= link_to "Back", items_path %> </p> </center>
+  </div> <!-- game column -->
+  <div class="col-md-3">
+    <h1><center> Users </center></h1>
+    <% if @users.nil? %> 
+      <p> Currently no users have this game! </p>
+    <% else %>
+      <ul>
+      <% for j in @users %>
+        <li> <%= link_to "#{j.name}", j %> </li>
+      <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div> <!-- row -->
