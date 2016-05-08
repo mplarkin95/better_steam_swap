@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   def index 
     @items = Item.all
     if params[:search]
-      @items = Item.search(params[:search]).order("name")
+      @items = Item.search(params[:search]).order("name").paginate(:page => params[:page], :per_page => 6)
     else 
       @items = Item.all.order("name")
     end

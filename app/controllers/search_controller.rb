@@ -1,12 +1,12 @@
 class SearchController < ApplicationController
 	def index
     if params[:users]
-    	@users = User.search(params[:search]).order("name")
+    	@users = User.search(params[:advsearch]).order("name").paginate(:page => params[:page], :per_page => 6)
     elsif params[:desc]
-    	@items = Item.desc_search(params[:search]).order("name")
-    elsif params[:search] 
+    	@items = Item.desc_search(params[:advsearch]).order("name").paginate(:page => params[:page], :per_page => 6)
+    elsif params[:advsearch] 
     	unless params[:users] and params[:desc]
-    		@items = Item.search(params[:search]).order("name")
+    		@items = Item.search(params[:advsearch]).order("name").paginate(:page => params[:page], :per_page => 6)
     	end
     end
   end

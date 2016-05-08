@@ -4,6 +4,7 @@
       <%= render @items, locals: {item: @items} %>
       </center>
   </div>
+  <%= will_paginate @items %>
 <% else %> 
-  <p> There are no users with <%= params[:search] %></p>
+  <p> There are no items with <%= params[:search] %></p>
 <% end %>
