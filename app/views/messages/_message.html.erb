@@ -1,0 +1,24 @@
+<div class="row">
+	<hr class="divider"></hr>
+	<% if message.seen && inbox %>
+	<div class="seen-message">
+	
+	<% else %>
+	
+	<div class="unseen-message">
+	
+	<% end %>
+
+
+	<h5> Sent From: <%= link_to message.sender.name, message.sender %></h5>
+	<h5> To: <%= link_to message.receiver.name, message.receiver %> </h5>
+	<% if message.trade %>
+		<div class="trade-description">
+			<h6>Wants: <%= link_to message.sent.name, message.sent %> for: <%= link_to message.received.name, message.received %></h6>
+		</div>
+	<% end %>
+
+		<p><%=message.message %></p>
+
+	</div>
+</div>

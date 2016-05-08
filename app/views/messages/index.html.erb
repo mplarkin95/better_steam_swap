@@ -1,0 +1,53 @@
+<!-- SideBar -->
+<div class="col-md-2">
+	<center>
+		<h2><%= @user.name %>'s <div id="box">Inbox</div></h2>
+		<div style="padding: 10px"></div>
+		<%= button_to "Back to Profile", @user ,:method => :get%>
+
+		<div class="row" style="padding: 10px">
+			<button id="Inbox-btn" class="btn btn-primary" onclick="inbox()">
+				Inbox
+			</button>
+		</div>
+
+		<div class="row" style="padding: 10px">
+			<button id="Sent-btn" class="btn" onclick="outbox()">
+				Sent
+			</button>
+		</div>
+	</center>
+</div>
+<div class="col-md-1"></div>
+
+<!-- Inbox -->
+<div id="Inbox" class="col-md-8">
+<% if @inbox.length ==0 %>
+	<div class="row" style="padding: 70px">
+		<center>
+			<h2> Nothing in your inbox :( </h2>
+		</center>
+	</div>
+<% else %>
+	<% for i in @inbox %>
+	<%= render 'message', :message =>i, :inbox =>true %>
+	 <% end %>
+<% end %>
+</div>
+
+<!-- Outbox  -->
+<div id="Outbox" class="col-md-8" style="display: None;">
+<% if @sent.length == 0 %>
+	<div class="row" style="padding: 70px">
+		<center>
+			<h2> You Haven't Sent anything :( </h2>
+		</center>
+	</div>
+<% else %>
+	<% for i in @sent %>
+
+		<%= render 'message', :message =>i, :inbox =>false %>
+	 <% end %>
+<% end %>
+</div>
+

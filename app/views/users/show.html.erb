@@ -1,8 +1,8 @@
 <div class="row">
+<!-- Begininig of sidebar -->
 <div class="col-md-2 container-fluid text-center">
 
 <h1> Welcome <br><%= @user.name %> </h1>
- 
 <%= @user.email %>
 <br>
 <%if @myprofile %>
@@ -12,10 +12,21 @@
   <div>
     <%= link_to "edit my profile", edit_user_path %>
   </div>
+  <div id='Msg-count'>
+    <a href=<%= messages_path %> >
+    <button class="btn btn-primary" type="button">
+      Messages <span class="badge"><%=@messages %></span>
+    </button>
+    </a>
+  </div>
 <% else %>
 Isn't there profile better than yours?
 <% end %>
 </div>
+
+<!-- Ending of sidebar -->
+
+<!-- Inventory -->
 <div class=" col-md-4 container-fluid">
 
  <div class="text-center">
@@ -25,16 +36,16 @@ Isn't there profile better than yours?
     <h2> <%= @user.name %>'s Inventory </h2>
   <% end %>
  </div>
- 
+ <center>
   <% for i in @games %>
-    <div class="row">
-      <%= render "shared/item",:item => i %>
-    </div>
+    <%= render "shared/item_small",:item => i %>
   <% end %>
+  </center>
 </div> 
 
 <div class="col-md-1"></div>
 
+<!-- Wishlist -->
 <div class=" col-md-4 container-fluid">
 
  <div class="text-center">
@@ -47,11 +58,13 @@ Isn't there profile better than yours?
   <% end %>
  </div>
 
- 
+ <center>
   <% for i in @wishlist %>
-  <div class="row">
-    <%= render "shared/item",:item => i %>
-  </div>
+    <%= render "shared/item_small",:item => i %>
+  
   <% end %>
+  </center>
 </div> 
+</div>
+
 

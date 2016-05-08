@@ -9,6 +9,13 @@ class UsersController < ApplicationController
       
       @games = Item.where(id: inv_ids)
       @wishlist = Item.where(id: wish_ids)
+      @messages = Message.where(receiver_id: @user.id).where(seen: false).count
+
+      if @messages.nil?
+        @messages=0
+      end
+
+
 
     else
       @myprofile = false

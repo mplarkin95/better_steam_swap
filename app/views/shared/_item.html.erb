@@ -1,12 +1,10 @@
-<div class="thumbnail">
-  <img src=<%= item.img_url %> >
-  <div class="caption">
-    <h3> <%= item.name %> </h3> 
-    <h6> <%= link_to "Store Page", item.steam_url %> </h6>
-    <% if item.description.nil? %>
-    <p> No Description Available </p>
-    <% else %>
-    <p>  <%= item.description.html_safe %> </p>
-    <% end %>
+<div class="col-md-4">
+  <div class="thumbnail item-thumbnail">
+    <img src=<%= item.img_url %> >
+    <div class="caption">
+      <h3> <%= item.name %> </h3> 
+      <h6> <%= link_to "Store Page", item.steam_url %> <%= link_to "Item Page", item %> </h6>
+      <p> <%= truncate(item.description, length: 120) {link_to "Continue", item} %> </p>
+    </div> 
   </div> 
-</div> 
+</div>

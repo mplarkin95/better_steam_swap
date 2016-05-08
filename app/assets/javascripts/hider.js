@@ -17,3 +17,21 @@ function Alt(id,strA,strB){
 		document.getElementById(id).innerHTML=strA
 	}
 }
+
+function inbox()
+{
+	$('#Outbox').hide();
+	$('#Inbox-btn').addClass("btn-primary");
+	$('#Inbox').show();
+	$('#Sent-btn').removeClass("btn-primary");
+	document.getElementById("box").innerHTML = "Inbox";
+}	
+
+function outbox(){
+
+	$('#Inbox').hide();
+	$('#Sent-btn').addClass("btn-primary");
+	$('#Outbox').show();
+	$('#Inbox-btn').removeClass("btn-primary");
+	document.getElementById("box").innerHTML = "Outbox";
+}
