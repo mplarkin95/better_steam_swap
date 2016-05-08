@@ -17,4 +17,9 @@ class Item < ActiveRecord::Base
 		#where("description LIKE ?", "%#{search}%")
 		#where("id_steam LIKE ?", "%#{search}%")
 	end
+
+	def self.desc_search(desc)
+		where("description LIKE ?", "%#{desc}%")
+    end
+
 end

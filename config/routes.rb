@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'wishlist' => 'wishlist#new'
   post 'wishlist' => 'wishlist#create'
   get 'messages' => 'messages#index'
+  get 'search' => 'search#index'
 
   
   resources :users
