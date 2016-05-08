@@ -1,6 +1,8 @@
 <% if @items.present? %>
   <div class="row">
+      <center>
       <%= render @items, locals: {item: @items} %>
+      </center>
   </div>
 <% else %> 
   <p> There are no users with <%= params[:search] %></p>

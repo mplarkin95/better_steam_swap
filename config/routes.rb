@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   patch 'steampull' =>'steampull#update'
   get 'wishlist' => 'wishlist#new'
   post 'wishlist' => 'wishlist#create'
+  post 'wishlistdelete' =>'wishlist#destroy'
   get 'messages' => 'messages#index'
   get 'search' => 'search#index'
 

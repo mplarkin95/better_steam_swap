@@ -1,0 +1,16 @@
+<div class="col-md-4">
+<center>
+  <div class="thumbnail item-thumbnail">
+    <img src=<%= item.img_url %> >
+    <div class="caption">
+      <h3> <%= item.name %> </h3> 
+      <h6> <%= link_to "Store Page", item.steam_url %> <%= link_to "Item Page", item %> </h6>
+      <center>
+      <h4>Delete:</h4>  
+      <h4>
+      <%= check_box_tag "ids[]", item.id %> </h4>
+      </center>
+    </div> 
+  </div>
+ </center> 
+</div>
