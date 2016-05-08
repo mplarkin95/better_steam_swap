@@ -1,13 +1,13 @@
-<%= form_tag wishlist_path do %>
-<ul>
+<%= form_tag wishlistdelete_path do %>
+<div class="row">
+	<center>
+	<%= submit_tag 'Delete Checked Items From Wishlist'%>
+	</center>
+</div>
   <% @items.each do |item| %>
-      <li>
-        <%= check_box_tag "items_ids[]", item.id %>
-        <%= h item.name %>
-      </li>
+   		<%= render 'shared/item_box', :item => item %>
+   		
   <% end %>
-</ul>
 
-<%= submit_tag 'Add'%>
 
 <% end %>
