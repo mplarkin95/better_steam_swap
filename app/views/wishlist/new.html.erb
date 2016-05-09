@@ -1,7 +1,7 @@
 <%= form_tag wishlistdelete_path do %>
 <div class="row">
-	<center>
-	<%= submit_tag 'Delete Checked Items From Wishlist'%>
+	<center style="padding-top: 10px;">
+	<%= submit_tag 'Delete Checked Items From Wishlist', class: "btn btn-primary" %>
 	</center>
 </div>
   <% @items.each do |item| %>

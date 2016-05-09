@@ -22,4 +22,14 @@ class Item < ActiveRecord::Base
 		where("description LIKE ?", "%#{desc}%")
     end
 
+    def self.trader?(item)
+    	for user in User.all
+    		wishlist = Wishlist.where(id: user.id).pluck(:item_id)
+    		if wishlist.include?(item.id)
+    			return true
+    		end
+    	end
+    	return false
+    end
+
 end

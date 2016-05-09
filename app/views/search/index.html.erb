@@ -4,6 +4,8 @@
   <%= label_tag(:users, "Users") %>
   <%= radio_button_tag(:desc, "Item description") %>
   <%= label_tag(:desc, "Item description") %>
+  <%= check_box_tag(:traders, "Traders") %>
+  <%= label_tag("Only show games who have Potential Traders") %>
   <%= submit_tag "Search", :name => nil, class: "btn btn-default" %>
 <% end %>
 
