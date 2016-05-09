@@ -1,18 +1,37 @@
 <%= form_tag(search_path, :method => "get", id: "advanced-search", class: "form-group") do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Advanced Search", class: "form-control" %>
+  <%= text_field_tag :advsearch, params[:advsearch], placeholder: "Advanced Search", class: "form-control" %>
   <%= radio_button_tag(:users, "Users") %>
   <%= label_tag(:users, "Users") %>
-  <%= radio_button_tag(:desc, "Description") %>
+  <%= radio_button_tag(:desc, "Item description") %>
   <%= label_tag(:desc, "Item description") %>
   <%= submit_tag "Search", :name => nil, class: "btn btn-default" %>
 <% end %>
 
 <% if @users.present? %>
-  <h1> Users </h1>
-  <%= render @users, locals: {user: @users} %>
-<% elsif @items.present? %>
-	<h1> Items </h1>
-	<%= render @items, locals: {item: @items} %>
-<% else %>
-  <h1> Nothing matches </h1>
+  <h1 class="search-result-title"> Users </h1>
+    <hr class="search-result-hr">
+    <div class="row">
+      <center>
+        <%= render @users, locals: {user: @users} %>
+      </center>
+    </div>
+  <%= will_paginate @users %>
+<% end %>
+<% if @items.present? %>
+	<h1 class="search-result-title"> Items </h1>
+    <hr class="search-result-hr">
+    <div class="row">
+      <center>
+	      <%= render @items, locals: {item: @items} %>
+      </center>
+    </div>
+  <%= will_paginate @items %>
+<% end %>
+
+<% if @users == false or @items == false %>
+  <div class="container" style="padding-top: 10px;">
+    <div class="alert alert-danger" role="alert">
+      <center><h1> No results found for: <%= params[:advsearch] %> </h1></center>
+    </div>
+  </div>
 <% end %>

@@ -12,15 +12,18 @@
 	      <li><%= link_to "Login", login_path %></li>
 	      <li><%= link_to "Signup", signup_path %></li>
 	    <% end %>
+      <li><%= link_to "Items", items_path %></li>
 	  </ul>
-    <div class="navbar-form navbar-left" role="search">
+    <div class="navbar-form navbar-right" role="search">
       <%= form_tag(items_path, :method => "get", id: "search-form", class: "form-group") do %>
         <%= text_field_tag :search, params[:search], placeholder: "Search Items", class: "form-control" %>
         <%= submit_tag "Search", :name => nil, class: "btn btn-default" %>
       <% end %>
     </div>
-    <ul class="nav navbar-nav">
-      <li><%= link_to "Advanced Search", search_path %></li>
-    </ul>
+    <div class="navbar-right">
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Advanced Search", search_path %></li>
+      </ul>
+    </div>
   </div> <!-- navbar links -->
 </nav>

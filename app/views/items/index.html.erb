@@ -1,9 +1,16 @@
 <% if @items.present? %>
+  <h1 class="search-result-title"> Items </h1>
+  <hr class="search-result-hr">
   <div class="row">
       <center>
       <%= render @items, locals: {item: @items} %>
       </center>
   </div>
+  <%= will_paginate @items %>
 <% else %> 
-  <p> There are no users with <%= params[:search] %></p>
+  <div class="container" style="padding-top: 10px;">
+    <div class="alert alert-danger" role="alert">
+      <center><h1> No results found for: <%= params[:search] %> </h1></center>
+    </div>
+  </div>
 <% end %>

@@ -1,11 +1,9 @@
 class ItemsController < ApplicationController
 
   def index 
-    @items = Item.all
+    @items = Item.all.order("name").paginate(:page => params[:page], :per_page => 6)
     if params[:search]
-      @items = Item.search(params[:search]).order("name")
-    else 
-      @items = Item.all.order("name")
+      @items = Item.search(params[:search]).order("name").paginate(:page => params[:page], :per_page => 6)
     end
   end
 
