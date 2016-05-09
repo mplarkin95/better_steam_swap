@@ -22,15 +22,32 @@ class Item < ActiveRecord::Base
 		where("description LIKE ?", "%#{desc}%")
     end
 
-    def self.trader?(item)
-    	for user in User.all
-    		wishlist = Wishlist.where(user_id: user.id).pluck(:item_id)
-    		inven = Inventory.where(user_id: user.id).pluck
-    		if wishlist.include?(item.id) 
-    			return true
-    		end
-    	end
-    	return false
+    def self.trader?(item, current_user)
+      user_ids = Inventory.where(item_id: item.id).pluck(:user_id)
+      users = User.where(id: user_ids)
+
+      # Grabs all the users that have the current game and have a 
+      # game that you have in their wishlist
+      traders = Array.new
+      user_games = Inventory.where(user_id: current_user.id).pluck(:item_id)
+      current_games = Item.where(id: user_games)
+
+
+
+
+      for user in users 
+        unless current_user == user 
+          wishlist = Wishlist.where(user_id: user.id).pluck(:item_id)
+          for game in current_games
+            if wishlist.include?(game.id)
+              #traders << user 
+              return true
+            end
+          end
+        end
+      end
+      return false
+
     end
 
 end
