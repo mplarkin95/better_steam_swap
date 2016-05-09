@@ -13,10 +13,11 @@ $(document).ready(function(){
       <div style="color: blue;"> 
         <center> <i>In your wishlist </i> </center>
       </div>
-    <% else %>
+    <% elsif logged_in? %>
      <center>
       <%= button_to "Add to Wishlist", 'add_to/', :class => "btn btn-primary", :params =>{:id => @item.id} %>
      </center>
+
     <% end %>
 
 

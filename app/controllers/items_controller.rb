@@ -10,6 +10,8 @@ class ItemsController < ApplicationController
   def show 
   	@item = Item.find(params[:id])
 
+    user_ids = Inventory.where(item_id: @item.id).pluck(:user_id)
+    @users = User.where(id: user_ids)
     if logged_in?
       #check if item is in the user wishlist
       @inWishlist= Wishlist.exists?(:user_id => current_user.id, :item_id => @item.id)
@@ -36,9 +38,7 @@ class ItemsController < ApplicationController
     end
     
     else
-    user_ids = Inventory.where(item_id: @item.id).pluck(:user_id)
     # Grabs all the users that have the current game
-    @users = User.where(id: user_ids)
       @inWishlist = false
     end
 
