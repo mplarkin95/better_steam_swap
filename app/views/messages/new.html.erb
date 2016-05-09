@@ -20,11 +20,11 @@
 	<% if @game_trade %>
 		<div id="games">
 			<div>
-				<%= f.label "Your game to trade" %>
+				<%= f.label "Your game to trade:" %>
 				<%= f.select :sent_item_id, @mygames %>
 			</div>
-
-			<%= f.hidden_field :rec_item_id %>
+			<%= f.label "The game you want:" %>
+			<%= f.select :rec_item_id, @theirgames, :selected => @selected_game.id %>
 		</div>
 	<% end %>
 

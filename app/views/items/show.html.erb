@@ -9,6 +9,17 @@ $(document).ready(function(){
     <h1><center> <%= @item.name %> </center></h1>
     <center> <img src= <%= @item.img_url %> width="500" height="200"> </center>
     <center> <p> <%= link_to "Store Page", @item.steam_url %> </p> </center>
+    <% if @inWishlist %>
+      <div style="color: blue;"> 
+        <center> <i>In your wishlist </i> </center>
+      </div>
+    <% else %>
+    <center>
+    <%= button_to "Add to Wishlist", 'add_to/', :class => "btn btn-primary", :params =>{:id => @item.id} %>
+    </center>
+    <% end %>
+
+
     <center> <p class="item-paragraph" align="left"> <%= raw @item.description %> </p>
     <center> <p> <%= link_to "Back", items_path %> </p> </center>
   </div> <!-- game column -->
@@ -20,7 +31,12 @@ $(document).ready(function(){
     <% else %>
       <ul class="list-group">
       <% for j in @users %>
-        <li class="list-group-item"> <%= link_to "#{j.name}", j %> </li>
+        <li class="list-group-item"> 
+          <%= link_to "#{j.name}", j %> 
+          <% if j.id != current_user.id %>
+          <%= link_to "Send Trade Message", newmessage_path(:recipient => j.id, :game_trade => {:item_req => @item.id}) %>
+          <% end %>
+        </li>
       <% end %>
       </ul>
     <% end %>
@@ -36,7 +52,12 @@ $(document).ready(function(){
       <% else %>
         <ul class="list-group">
           <% for i in @traders %>
-            <li class="list-group-item"> <%= link_to "#{i.name}", i %> </li>
+            <li class="list-group-item">
+                <%= link_to "#{i.name}", i %>
+                <% if i.id != current_user.id %> 
+                <%= link_to "Send Trade Message", newmessage_path(:recipient => i.id, :game_trade => {:item_req => @item.id}) %>
+                <% end %>
+            </li>
           <% end %>
         </ul>
       <% end %>

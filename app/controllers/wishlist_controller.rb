@@ -44,15 +44,17 @@ class WishlistController < ApplicationController
   end
 
   def update
-    game_id = params[:game_id]
+
+    game_id = params[:id]
 
     wi = Wishlist.new(:user_id => current_user.id, :item_id =>game_id)
-
-    wi.save
-
-    respond_to do |format|
-        format.js {render nothing: true, :notice => response}
-      end
+    game = Item.find(game_id)
+    if wi.save
+      flash[ :success]= game.name + " has been added to your wishlist"
+      redirect_to item_path(game.id)
+    else
+      flash[ :danger]= "stupid idiot"
+      redirect_to item_path(game.id)
     end
-
+  end
 end
