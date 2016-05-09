@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   post 'messages' => 'messages#create'
   post 'messages/update_seen' => 'messages#update_seen'
   post 'messages/delete' => 'messages#delete'
-  post 'wishlist/update' => 'wishlist#update'
+  post 'items/add_to' => 'wishlist#update'
   resources :users
   resources :items
 

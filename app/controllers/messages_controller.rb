@@ -18,7 +18,7 @@ class MessagesController < ApplicationController
 			@recipient = false
 		end
 		if params[:game_trade]
-			@game_trade = params[:game_trade]
+			@game_trade = true
 		else
 			@game_trade = false
 		end
@@ -26,16 +26,32 @@ class MessagesController < ApplicationController
 		@message = Message.new(:sender_id =>current_user.id, :trade =>@game_trade)
 
 		@dropdown = []
+		
 		for person in User.where.not(id: current_user.id)
 			@dropdown << [person.name,person.id]
 		end
-		unless @game_trade
-			games = Item.where(id: Inventory.where(user_id: current_user.id ).pluck(:item_id))
+
+		if @game_trade
+			mygames = Item.where(id: Inventory.where(user_id: current_user.id ).pluck(:item_id))
 
 			@mygames = []
-			for g in games
+
+			for g in mygames
 				@mygames << [g.name,g.id]
 			end
+
+			@theirgames = []
+			if @recipient
+				for g in Item.where(id: Inventory.where(user_id: @recipient.id).pluck(:item_id))
+					@theirgames<<[g.name, g.id]
+				end
+			else
+				for g in Item.all
+					@theirgames <<[g.name, g.id]
+				end
+			end
+
+			@selected_game = Item.find(params[:game_trade][:item_req])
 		end
 
 
