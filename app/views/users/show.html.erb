@@ -44,7 +44,7 @@
   <% for i in @games %>
     <%= render "shared/item_small",:item => i %>
   <% end %>
-  <%= will_paginate @games %>
+  <%= will_paginate @games, :param_name => 'games_page' %>
   </center>
 </div> 
 
@@ -66,7 +66,7 @@
   <% for i in @wishlist %>
     <%= render "shared/item_small",:item => i %>
   <% end %>
-  <%= will_paginate @wishlist %>
+  <%= will_paginate @wishlist, :param_name => 'wishlist_page' %>
   </center>
 </div> 
 </div>
