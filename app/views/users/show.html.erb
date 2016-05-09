@@ -3,7 +3,7 @@
 <div class="col-md-2 container-fluid text-center">
 
 <h1> Welcome <br><%= @user.name %> </h1>
-<%= @user.email %>
+<%=link_to (@user.name+"'s Steam profile"), @user.steam_id %>
 <br>
 <%if @myprofile %>
 	<div>
