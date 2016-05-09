@@ -3,15 +3,17 @@
 <div class="col-md-2 container-fluid text-center">
 
 <h1> Welcome <br><%= @user.name %> </h1>
-<%=link_to (@user.name+"'s Steam profile"), @user.steam_id %>
+<%=button_to (@user.name+"'s Steam profile"), @user.steam_id, class: "btn btn-primary" %>
 <br>
 <%if @myprofile %>
 	<div>
-      <%= button_to "update inventory", steampull_path, :method => :get %>
+      <%= button_to "Update Inventory", steampull_path, :method => :get, class: "btn btn-primary" %>
   </div>
+  <br>
   <div>
-    <%= link_to "edit my profile", edit_user_path %>
+    <%= button_to "Edit My Profile", edit_user_path, :method => :get, class: "btn btn-primary" %>
   </div>
+  <br>
   <div id='Msg-count'>
     <a href=<%= messages_path %> >
     <button class="btn btn-primary" type="button">
@@ -42,6 +44,7 @@
   <% for i in @games %>
     <%= render "shared/item_small",:item => i %>
   <% end %>
+  <%= will_paginate @games %>
   </center>
 </div> 
 
@@ -54,7 +57,7 @@
 
   <% if @myprofile %>
   <h2>Your Wishlist!</h2>
-  <%= link_to "Edit your Wishlist", wishlist_url %>
+  <%= button_to "Edit Your Wishlist", wishlist_url, :method => :get, class: "btn btn-primary" %>
   <% else %> 
   <h2> <%= @user.name %>'s Wishlist </h2>
   <% end %>
@@ -62,8 +65,8 @@
  <center>
   <% for i in @wishlist %>
     <%= render "shared/item_small",:item => i %>
-  
   <% end %>
+  <%= will_paginate @wishlist %>
   </center>
 </div> 
 </div>

@@ -46,12 +46,13 @@ class WishlistController < ApplicationController
   def update
     game_id = params[:game_id]
 
-    wi = Wishlist.new(:user_id => current_user.id :item_id =>game_id)
+    wi = Wishlist.new(:user_id => current_user.id, :item_id =>game_id)
 
     wi.save
 
     respond_to do |format|
         format.js {render nothing: true, :notice => response}
       end
+    end
 
 end
