@@ -8,21 +8,30 @@
 <% end %>
 
 <% if @users.present? %>
-  <h1> Users </h1>
+  <h1 class="search-result-title"> Users </h1>
+    <hr class="search-result-hr">
     <div class="row">
       <center>
         <%= render @users, locals: {user: @users} %>
       </center>
     </div>
   <%= will_paginate @users %>
-<% elsif @items.present? %>
-	<h1> Items </h1>
+<% end %>
+<% if @items.present? %>
+	<h1 class="search-result-title"> Items </h1>
+    <hr class="search-result-hr">
     <div class="row">
       <center>
 	      <%= render @items, locals: {item: @items} %>
       </center>
     </div>
   <%= will_paginate @items %>
-<% else %>
-  <h1> Nothing matches </h1>
+<% end %>
+
+<% if @users == false or @items == false %>
+  <div class="container" style="padding-top: 10px;">
+    <div class="alert alert-danger" role="alert">
+      <center><h1> No results found for: <%= params[:advsearch] %> </h1></center>
+    </div>
+  </div>
 <% end %>
