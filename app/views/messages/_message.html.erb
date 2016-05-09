@@ -1,23 +1,36 @@
-<div class="row">
+<div id="msg" class="row">
 	<hr class="divider"></hr>
 	<% if message.seen && inbox %>
-	<div class="seen-message">
-	
+		<div id="msg-stat" class="seen-message" >
 	<% else %>
-	
-	<div class="unseen-message">
-	
+		<div id="msg-stat" class="unseen-message" >
 	<% end %>
+	<!-- Mark as seen Button -->
+	
+	<h5> Sent From: <%= link_to message.sender.name, message.sender %>
+		<div class="pull-right"> <%= message.created_at.localtime.strftime("sent at %m/%d/%y %r") %></div>
+	</h5>
 
-
-	<h5> Sent From: <%= link_to message.sender.name, message.sender %></h5>
-	<h5> To: <%= link_to message.receiver.name, message.receiver %> </h5>
+	<h5> To: <%= link_to message.receiver.name, message.receiver %>  
+	<div id="seen-notice" class="pull-right"> 
+		<% if inbox && !message.seen  %>
+			<%= button_tag "mark as seen", :onclick => "seen_message(this)", :data =>{:id => message.id} %>
+		<% elsif message.seen %>
+			<i> seen </i>
+		<% end %>
+	</h5>
 	<% if message.trade %>
-		<div class="trade-description">
-			<h6>Wants: <%= link_to message.sent.name, message.sent %> for: <%= link_to message.received.name, message.received %></h6>
-		</div>
+			<h6>Wants: <%= link_to message.sent.name, message.sent %> for: <%= link_to message.received.name, message.received %>
 	<% end %>
-
+				<div class="pull-right"> 
+					<%= button_tag "Delete", :onclick =>"javascript:delete_message(this)", :data =>{:id => message.id} %> 
+				</div>
+			</h6>
+	<% if inbox %>
+	<div>
+		<%= link_to "Reply", newmessage_path(:recipient => message.sender) %>
+	</div> 
+	<% end %>
 		<p><%=message.message %></p>
 
 	</div>

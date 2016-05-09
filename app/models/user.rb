@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 	has_many :receivers, :class_name => 'Message',:foreign_key => :reciever_id, dependent: :destroy
 
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-	VALID_STEAMURL_REGEX = /(http:\/\/steamcommunity.com\/)(id\/\w+\/)|(http:\/\/steamcommunity.com\/)(profile\/\d+\/)/i
+	VALID_STEAMURL_REGEX = /|(http:\/\/steamcommunity.com\/)(id\/\w+\/)|(http:\/\/steamcommunity.com\/)(profile\/\d+\/)/i
 	validates :name, presence: true, length: {maximum: 50}, uniqueness: true
 	validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: true
 	has_secure_password

@@ -20,7 +20,9 @@
     </a>
   </div>
 <% else %>
-Isn't there profile better than yours?
+<% if logged_in? %>
+  <%= link_to "Send Message", newmessage_path(:recipient => @user.id) %> 
+  <% end %>
 <% end %>
 </div>
 

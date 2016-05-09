@@ -12,10 +12,15 @@ Rails.application.routes.draw do
   post 'wishlistdelete' =>'wishlist#destroy'
   get 'messages' => 'messages#index'
   get 'search' => 'search#index'
-
-  
+  get 'newmessage' => 'messages#new'
+  post 'messages' => 'messages#create'
+  post 'messages/update_seen' => 'messages#update_seen'
+  post 'messages/delete' => 'messages#delete'
+  post 'wishlist/update' => 'wishlist#update'
   resources :users
   resources :items
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,0 +1,37 @@
+<div class="form container-fluid col-md-offset-2 col-md-8 fixed-nav-padding" >
+<%= form_for(@message) do |f| %>
+	<%= render 'shared/error_messages_message' %>
+		<div class="hidden-input">
+			<%= f.hidden_field :sender_id%>
+		</div>
+	<% if @recipient %>
+		<div class="input-field">
+			<%= f.label "To" %>
+			<%= f.select :receiver_id, @dropdown, :selected => @recipient.id %>
+		</div>
+	<% else %>
+		<div class="input-field">
+			<%= f.label "To" %>
+			<%= f.select :receiver_id, @dropdown %>
+		</div>	
+	<% end %>
+
+		<%= f.hidden_field :trade %>
+	<% if @game_trade %>
+		<div id="games">
+			<div>
+				<%= f.label "Your game to trade" %>
+				<%= f.select :sent_item_id, @mygames %>
+			</div>
+
+			<%= f.hidden_field :rec_item_id %>
+		</div>
+	<% end %>
+
+		<h4><%= f.label "Message Body:" %></h4>
+		<div class="row">
+			<%= f.text_area :message, :cols => '60', :rows => '10' %>
+		</div>
+<%= f.submit "submit", class: "btn btn-primary", style: "margin-top: 10px;" %>
+<% end %>
+</div>
