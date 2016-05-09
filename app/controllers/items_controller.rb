@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
 
     # Grabs all the users that have the current game and have a 
     # game that you have in their wishlist
-    @traders = Array.new
+    @traders = []
     user_games = Inventory.where(user_id: current_user.id).pluck(:item_id)
     @current_games = Item.where(id: user_games)
 
@@ -30,7 +30,7 @@ class ItemsController < ApplicationController
 
     for user in @users 
       unless current_user == user 
-        wishlist = Wishlist.where(id: user.id).pluck(:item_id)
+        wishlist = Wishlist.where(user_id: user.id).pluck(:item_id)
         for game in @current_games
           if wishlist.include?(game.id)
             @traders << user 
