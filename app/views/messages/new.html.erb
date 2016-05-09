@@ -6,25 +6,29 @@
 		</div>
 	<% if @recipient %>
 		<div class="input-field">
-			<%= f.label "To" %>
-			<%= f.select :receiver_id, @dropdown, :selected => @recipient.id %>
+			<%= f.label "To:" %>
+			<%= f.hidden_field :receiver_id, :value => @recipient.id %>
+			<div style="font-size: 16px;">
+				<b><%= @recipient.name %></b>
+			</div>
 		</div>
 	<% else %>
 		<div class="input-field">
-			<%= f.label "To" %>
+			<%= f.label "To:" %>
 			<%= f.select :receiver_id, @dropdown %>
 		</div>	
 	<% end %>
 
 		<%= f.hidden_field :trade %>
-	<% if @game_trade %>
+	<% if @game_trade && @selected_game %>
 		<div id="games">
-			<div>
-				<%= f.label "Your game to trade:" %>
-				<%= f.select :sent_item_id, @mygames %>
-			</div>
 			<%= f.label "The game you want:" %>
 			<%= f.select :rec_item_id, @theirgames, :selected => @selected_game.id %>
+		</div>
+	<% elsif @game_trade %>
+		<div id="games">
+			<%= f.label "The game you want:" %>
+			<%= f.select :rec_item_id, @theirgames, :include_blank =>true %>
 		</div>
 	<% end %>
 

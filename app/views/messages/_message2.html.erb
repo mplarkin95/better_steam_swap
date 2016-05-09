@@ -18,10 +18,7 @@
 		<% elsif message.seen %>
 			<i> seen </i>
 		<% end %>
-	</div>
 	</h5>
-
-
 	<h6>
 		<div class="pull-right"> 
 			<%= button_tag "Delete", :onclick =>"javascript:delete_message(this)", :data =>{:id => message.id} %> 
@@ -32,17 +29,11 @@
 		<%= link_to "Reply", newmessage_path(:recipient => message.sender) %>
 	</div> 
 	<% end %>
-	<div class="row">
-		<% if message.received %>
-
-		<div class="col-md-2">
-			<center><h4> Game to trade</h4></center>
-			<%= render 'shared/item_small_msg', :item =>message.received %>
-		</div>
-		<%end %>
-		<div class="col-md-8">
-			<p><%=message.message %></p>
-		</div>
+	<% if message.trade %>
+		<%= render 'shared/item_small', :item =>message.received.name %>
+	<%end %>
+	<div class="col-md-8">
+		<p><%=message.message %></p>
 	</div>
 
 	</div>

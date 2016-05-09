@@ -23,7 +23,7 @@
   </div>
 <% else %>
 <% if logged_in? %>
-  <%= link_to "Send Message", newmessage_path(:recipient => @user.id) %> 
+  <%= link_to "Send Message", newmessage_path(:recipient => @user.id, :game_trade => true) %> 
   <% end %>
 <% end %>
 </div>

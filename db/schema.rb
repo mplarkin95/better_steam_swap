@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160509022036) do
+ActiveRecord::Schema.define(version: 20160509182003) do
 
   create_table "inventories", force: :cascade do |t|
     t.integer  "item_id"
@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 20160509022036) do
     t.text     "message"
     t.integer  "sender_id",                       null: false
     t.integer  "receiver_id",                     null: false
-    t.integer  "sent_item_id"
     t.integer  "rec_item_id"
     t.boolean  "trade"
     t.datetime "created_at",                      null: false

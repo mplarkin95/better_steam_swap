@@ -32,14 +32,7 @@ class MessagesController < ApplicationController
 		end
 
 		if @game_trade
-			mygames = Item.where(id: Inventory.where(user_id: current_user.id ).pluck(:item_id))
-
-			@mygames = []
-
-			for g in mygames
-				@mygames << [g.name,g.id]
-			end
-
+			
 			@theirgames = []
 			if @recipient
 				for g in Item.where(id: Inventory.where(user_id: @recipient.id).pluck(:item_id))
@@ -50,8 +43,11 @@ class MessagesController < ApplicationController
 					@theirgames <<[g.name, g.id]
 				end
 			end
-
-			@selected_game = Item.find(params[:game_trade][:item_req])
+			if params[:item_req]
+				@selected_game = Item.find(params[:item_req])
+			else
+				@selected_game =false
+			end
 		end
 
 
@@ -104,7 +100,7 @@ class MessagesController < ApplicationController
 	private
 
     def msg_params
-      params.require(:message).permit(:sender_id, :receiver_id, :rec_item_id, :sent_item_id,
+      params.require(:message).permit(:sender_id, :receiver_id, :rec_item_id, 
                                    :trade, :message)
     end
 end
