@@ -24,8 +24,9 @@ class Item < ActiveRecord::Base
 
     def self.trader?(item)
     	for user in User.all
-    		wishlist = Wishlist.where(id: user.id).pluck(:item_id)
-    		if wishlist.include?(item.id)
+    		wishlist = Wishlist.where(user_id: user.id).pluck(:item_id)
+    		inven = Inventory.where(user_id: user.id).pluck
+    		if wishlist.include?(item.id) 
     			return true
     		end
     	end

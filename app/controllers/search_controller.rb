@@ -11,16 +11,12 @@ class SearchController < ApplicationController
     elsif params[:desc]
     	@items = Item.desc_search(params[:advsearch]).order("name").paginate(:page => params[:page], :per_page => 6)
 
-      if params[:traders]
-      end
-
       if @items.empty?
         @items = false
       end
     elsif params[:advsearch] 
-    	unless params[:users] or params[:desc]
-    		@items = Item.search(params[:advsearch]).order("name").paginate(:page => params[:page], :per_page => 6)
-
+    	unless params[:users] and params[:desc]
+        @items = Item.search(params[:advsearch])
         if params[:traders]
           traders = Array.new
           for item in @items
@@ -29,9 +25,11 @@ class SearchController < ApplicationController
             end
           end
           @items = Item.where(id: traders).paginate(:page => params[:page], :per_page => 6)
+        else 
+          @items = Item.search(params[:advsearch]).order("name").paginate(:page => params[:page], :per_page => 6)
         end
-
     	end
+
       if @items.empty?
         @items = false
       end
