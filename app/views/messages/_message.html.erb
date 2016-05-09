@@ -29,7 +29,7 @@
 	</h6>
 	<% if inbox %>
 	<div>
-		<%= link_to "Reply", newmessage_path(:recipient => message.sender) %>
+		<%= link_to "Reply", newmessage_path(:recipient => message.sender, :game_trade=>true) %>
 	</div> 
 	<% end %>
 	<div class="row">
