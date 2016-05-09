@@ -8,20 +8,20 @@ $(document).ready(function(){
   <div class="col-md-6">
     <h1><center> <%= @item.name %> </center></h1>
     <center> <img src= <%= @item.img_url %> width="500" height="200"> </center>
-    <center> <p> <%= link_to "Store Page", @item.steam_url %> </p> </center>
+    <center> <p> <%= button_to "Store Page", @item.steam_url, class: "btn btn-primary" %> </p> </center>
     <% if @inWishlist %>
       <div style="color: blue;"> 
         <center> <i>In your wishlist </i> </center>
       </div>
     <% else %>
-    <center>
-    <%= button_to "Add to Wishlist", 'add_to/', :class => "btn btn-primary", :params =>{:id => @item.id} %>
-    </center>
+     <center>
+      <%= button_to "Add to Wishlist", 'add_to/', :class => "btn btn-primary", :params =>{:id => @item.id} %>
+     </center>
     <% end %>
 
 
     <center> <p class="item-paragraph" align="left"> <%= raw @item.description %> </p>
-    <center> <p> <%= link_to "Back", items_path %> </p> </center>
+    <center> <p> <%= button_to "Back", items_path, :method => :get, class: "btn btn-primary" %> </p> </center>
   </div> <!-- game column -->
 
   <div class="col-md-3">

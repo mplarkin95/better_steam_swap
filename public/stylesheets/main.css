@@ -8,10 +8,11 @@
 }
 
 #footer {
-	height: 70px;
-	width: 100%;
-	background-color: #5A5453;
-	color: #FFFFFF;
+	clear: both;
+	position: relative;
+	height: 3em;
+	margin-top: -3em;
+	padding-top: 70px;
 }
 
 #footer > ul {
@@ -27,6 +28,7 @@
 body {
 	background-color: #E0E0E0;
 	color: #212121;
+	height: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
