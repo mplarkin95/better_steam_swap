@@ -30,7 +30,7 @@ class ItemsController < ApplicationController
 
     for user in @users 
       unless current_user == user 
-        wishlist = Wishlist.where(id: user.id).pluck(:item_id)
+        wishlist = Wishlist.where(user_id: user.id).pluck(:item_id)
         for game in @current_games
           if wishlist.include?(game.id)
             @traders << user 
