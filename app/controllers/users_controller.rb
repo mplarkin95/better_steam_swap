@@ -11,8 +11,8 @@ class UsersController < ApplicationController
       inv_ids = Inventory.where(user_id: @user.id).pluck(:item_id)
       wish_ids = Wishlist.where(user_id: @user.id).pluck(:item_id)
       
-      @games = Item.where(id: inv_ids).paginate(:page => params[:page], :per_page => 9)
-      @wishlist = Item.where(id: wish_ids).paginate(:page => params[:page], :per_page => 9)
+      @games = Item.where(id: inv_ids).paginate(:page => params[:games_page], :per_page => 9)
+      @wishlist = Item.where(id: wish_ids).paginate(:page => params[:wishlist_page], :per_page => 9)
       @messages = Message.where(receiver_id: @user.id).where(seen: false).count
 
       if @messages.nil?
