@@ -33,8 +33,10 @@ $(document).ready(function(){
       <% for j in @users %>
         <li class="list-group-item"> 
           <%= link_to "#{j.name}", j %> 
-          <% if j.id != current_user.id %>
-          <%= link_to "Send Trade Message", newmessage_path(:recipient => j.id, :game_trade => true, :item_req => @item.id) %>
+          <% if logged_in? %>
+            <% if j.id != current_user.id %>
+            <%= link_to "Send Trade Message", newmessage_path(:recipient => j.id, :game_trade => true, :item_req => @item.id) %>
+            <% end %>
           <% end %>
         </li>
       <% end %>

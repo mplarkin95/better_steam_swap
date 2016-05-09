@@ -4,8 +4,10 @@
   <%= label_tag(:users, "Users") %>
   <%= radio_button_tag(:desc, "Item description") %>
   <%= label_tag(:desc, "Item description") %>
-  <%= check_box_tag(:traders, "Traders") %>
-  <%= label_tag("Potential Traders") %>
+  <% if logged_in? %>
+    <%= check_box_tag(:traders, "Traders") %>
+    <%= label_tag("Potential Traders") %>
+  <% end %>
   <br>
   <%= submit_tag "Search", :name => nil, class: "btn btn-default" %>
 <% end %>

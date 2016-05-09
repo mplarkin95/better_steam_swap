@@ -2,7 +2,7 @@
 <!-- Begininig of sidebar -->
 <div class="col-md-2 container-fluid text-center">
 
-<h1> Welcome <br><%= @user.name %> </h1>
+<h1> <%= @user.name %> </h1>
 <%=button_to (@user.name+"'s Steam profile"), @user.steam_id, class: "btn btn-primary" %>
 <br>
 <%if @myprofile %>
@@ -57,7 +57,9 @@
 
   <% if @myprofile %>
   <h2>Your Wishlist!</h2>
-  <%= button_to "Edit Your Wishlist", wishlist_url, :method => :get, class: "btn btn-primary" %>
+  <div class="row" style="padding-bottom: 10px;">
+      <%= button_to "Edit Your Wishlist", wishlist_url, :method => :get, class: "btn btn-primary" %>
+  </div>
   <% else %> 
   <h2> <%= @user.name %>'s Wishlist </h2>
   <% end %>
