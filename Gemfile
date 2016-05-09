@@ -38,8 +38,8 @@ gem "httparty"
 
 group :development, :test do
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console
-  #gem 'debugger'
-  gem 'byebug'
+  gem 'debugger'
+  # gem 'byebug'
 end
 
 group :development do
